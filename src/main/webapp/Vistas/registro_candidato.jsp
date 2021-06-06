@@ -13,19 +13,19 @@
 </head>
 
 <body>
-	<form id="msform">
-	<fieldset>
-		<img src="images/logo_horizontal.png">
-		<h2 class="fs-title">Registrar Candidato</h2>
-		<input type="text" id="documento" placeholder="Documento" />
-		<input type="text" id="nombre" placeholder="Nombre"/>
-		<input type="text" id="apellido" placeholder="Apellido"/>
-		<select class="form-control" id="proceso">
-			<option disabled="disabled" selected="selected">Proceso</option>
-		</select>
-		<input type="button" name="next" class="next action-button" value="Registrar Candidato" />
-	</fieldset>
-</form>
+	<form id="msform" action="CandidatoController" method="post">
+		<fieldset>
+			<img src="images/logo_horizontal.png">
+			<h2 class="fs-title">Registrar Candidato</h2>
+			<input type="text" id="documento" placeholder="Documento" />
+			<input type="text" id="nombre" placeholder="Nombre"/>
+			<input type="text" id="apellido" placeholder="Apellido"/>
+			<select class="form-control" id="proceso">
+				<option disabled="disabled" selected="selected">Proceso</option>
+			</select>
+			<input type="submit" name="next" class="next action-button" value="Registrar Candidato" />
+		</fieldset>
+	</form>
 
 <!-- jQuery -->
 <script src="http://thecodeplayer.com/uploads/js/jquery-1.9.1.min.js" type="text/javascript"></script>

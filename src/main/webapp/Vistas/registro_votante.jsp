@@ -13,11 +13,24 @@
 </head>
 
 <body>
-	<form action="VotanteController" method="post">
-		<input type="text" name="documento" placeholder="Documento" />
-		<input type="text" name="nombre" placeholder="Nombre"/>
-		<input type="text" name="email" placeholder="Email"/>
-		<input type="submit" name="registrar" class="next action-button" value="Registrar Votante"/>
+	<form id="msform" action="VotanteController" method="post">
+		<fieldset>
+			<img src="images/logo_horizontal.png">
+			<h2 class="fs-title">Registrar Votante</h2>		
+			<select class="form-control" name="estamento">
+				<option disabled="disabled" selected="selected">Estamento</option>
+			</select>
+			<select class="form-control" name="tipodocumento">
+				<option disabled="disabled" selected="selected">Tipo de Documento</option>
+			</select>
+			<input type="text" name="documento" placeholder="Documento" />
+			<input type="text" name="nombre" placeholder="Nombre"/>
+			<input type="text" name="email" placeholder="Email"/>
+			<select class="form-control" id="proceso">
+				<option disabled="disabled" selected="selected">Proceso</option>
+			</select>
+			<input type="button" name="next" class="next action-button" value="Registrar Votante" />
+		</fieldset>
 	</form>
 
 	<!-- jQuery -->
