@@ -1,5 +1,6 @@
 package co.ufps.elecciones.modelo;
 
+
 import java.io.Serializable;
 
 import javax.persistence.Column;
