@@ -12,9 +12,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table (name = "eleccion")
 public class Eleccion implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name ="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,8 +51,14 @@ public class Eleccion implements Serializable {
 	}
 
 	public Eleccion(int id, String nombre, Timestamp fechainicio, Timestamp fechafin, String cargo) {
-		super();
 		this.id = id;
+		this.nombre = nombre;
+		this.fechainicio = fechainicio;
+		this.fechafin = fechafin;
+		this.cargo = cargo;
+	}
+	
+	public Eleccion(String nombre, Timestamp fechainicio, Timestamp fechafin, String cargo) {
 		this.nombre = nombre;
 		this.fechainicio = fechainicio;
 		this.fechafin = fechafin;
@@ -116,6 +127,10 @@ public class Eleccion implements Serializable {
 
 	public void setCandidatos(List<Candidato> candidatos) {
 		this.candidatos = candidatos;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override

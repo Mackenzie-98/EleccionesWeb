@@ -35,8 +35,11 @@ public class Tipo_Documento implements Serializable {
 	}
 
 	public Tipo_Documento(int id, String descripcion) {
-		super();
 		this.id = id;
+		this.descripcion = descripcion;
+	}
+	
+	public Tipo_Documento(String descripcion) {
 		this.descripcion = descripcion;
 	}
 

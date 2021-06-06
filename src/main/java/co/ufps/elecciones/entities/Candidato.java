@@ -1,5 +1,6 @@
 package co.ufps.elecciones.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "candidato")
-public class Candidato {
+public class Candidato implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
@@ -47,8 +51,14 @@ public class Candidato {
 	}
 
 	public Candidato(int id, String documento, String nombre, String apellido, int numero) {
-		super();
 		this.id = id;
+		this.documento = documento;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.numero = numero;
+	}
+	
+	public Candidato(String documento, String nombre, String apellido, int numero) {
 		this.documento = documento;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -109,6 +119,10 @@ public class Candidato {
 
 	public void setVotos(List<Voto> votos) {
 		this.votos = votos;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override

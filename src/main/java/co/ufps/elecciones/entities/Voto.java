@@ -16,6 +16,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "voto")
 public class Voto implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name ="id") 
@@ -50,8 +53,13 @@ public class Voto implements Serializable {
 	}
 
 	public Voto(int id, Timestamp fechacreacion, Timestamp fechavoto, String uuid, String enlace) {
-		super();
 		this.id = id;
+		this.fechacreacion = fechacreacion;
+		this.fechavoto = fechavoto;
+		this.uuid = uuid;
+		this.enlace = enlace;
+	}
+	public Voto(Timestamp fechacreacion, Timestamp fechavoto, String uuid, String enlace) {
 		this.fechacreacion = fechacreacion;
 		this.fechavoto = fechavoto;
 		this.uuid = uuid;
@@ -120,6 +128,10 @@ public class Voto implements Serializable {
 
 	public void setVotante(Votante votante) {
 		this.votante = votante;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override
