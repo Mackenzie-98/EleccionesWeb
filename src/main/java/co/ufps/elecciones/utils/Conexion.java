@@ -5,10 +5,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class Conexion {
-		private static EntityManager manager = null;
+		private EntityManager manager = null;
 		
 		public Conexion() {
-			manager = this.getManager();
 		}
 		
 		
@@ -20,7 +19,7 @@ public class Conexion {
 		public EntityManager getManager(){
 			if ( manager == null ) {
 				EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistencia");
-	            manager = emf.createEntityManager();
+	            this.setManager(emf.createEntityManager());
 	        }
 			return manager;
 		}

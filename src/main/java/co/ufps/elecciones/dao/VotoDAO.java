@@ -2,10 +2,11 @@ package co.ufps.elecciones.dao;
 
 import java.util.List;
 
+import co.ufps.elecciones.entities.Voto;
 import co.ufps.elecciones.interfaces.GenericDao;
 import co.ufps.elecciones.utils.Conexion;
 
-public class Voto implements GenericDao<Voto, Integer> {
+public class VotoDAO implements GenericDao<Voto, Integer> {
 
 	public Conexion conexion;
 	

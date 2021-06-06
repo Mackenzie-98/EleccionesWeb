@@ -7,7 +7,7 @@ import co.ufps.elecciones.utils.Conexion;
 
 public class Tipo_DocumentoDAO implements GenericDao<Tipo_Documento, Integer> {
 
-	public Conexion conexion;
+	public Conexion conexion=new Conexion();
 	
 	@Override
 	public void insert(Tipo_Documento entity) {
@@ -42,10 +42,7 @@ public class Tipo_DocumentoDAO implements GenericDao<Tipo_Documento, Integer> {
 
 	@Override
 	public List<Tipo_Documento> findAll() {
-		conexion.getManager().getTransaction().begin();
-		List<Tipo_Documento> ans = conexion.getManager().createNativeQuery("SELECT * FROM tipodocumento").getResultList();
-		conexion.getManager().getTransaction().commit();
-		return ans;
+		return conexion.getManager().createNativeQuery("SELECT * FROM tipodocumento;").getResultList();
 	}
 
 	@Override
