@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-@WebServlet("/VotanteController")
+@WebServlet("/")
+
 public class VotanteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -20,25 +21,25 @@ public class VotanteController extends HttpServlet {
     }
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nombre = request.getParameter("nombre");
-		String documento = request.getParameter("documento");
-		String email = request.getParameter("email");
+//		String nombre = request.getParameter("nombre");
+//		String documento = request.getParameter("documento");
+//		String email = request.getParameter("email");
 		
-		response.setContentType("text/html;charset=UTF-8");
-		try(PrintWriter out = response.getWriter()){
-			out.println("Nombre " + nombre);
-		}
+		PrintWriter out = response.getWriter();
+			out.println("<html><body");
+			out.println("<h1> Hello world</h1>");
+			out.println("</body></html>");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession(true);
-		String nombre = request.getParameter("nombre");
-		String documento = request.getParameter("documento");
-		String email = request.getParameter("email");
-		
-		response.setContentType("text/html;charset=UTF-8");
-		try(PrintWriter out = response.getWriter()){
-			out.println("Nombre " + nombre);
-		}
+//		HttpSession session = request.getSession(true);
+//		String nombre = request.getParameter("nombre");
+//		String documento = request.getParameter("documento");
+//		String email = request.getParameter("email");
+//		
+		PrintWriter out = response.getWriter();
+		out.println("<html><body");
+		out.println("<h1> Hello world</h1>");
+		out.println("</body></html>");
 	}
 }

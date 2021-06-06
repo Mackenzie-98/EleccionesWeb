@@ -8,7 +8,7 @@ import co.ufps.elecciones.utils.Conexion;
 
 public class CandidatoDAO implements GenericDao<Candidato, Integer> {
 
-	public Conexion conexion;
+	public Conexion conexion = new Conexion();
 	
 	@Override
 	public void insert(Candidato entity) {
