@@ -5,8 +5,12 @@
              version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 
   <persistence-unit name="persistencia">
-  <class>co.ufps.elecciones.modelo.Tipo_Documento</class>
-  	<class>co.ufps.elecciones.modelo.Eleccion</class>
+  <class>co.ufps.elecciones.entities.Tipo_Documento</class>
+  	<class>co.ufps.elecciones.entities.Eleccion</class>
+  	<class>co.ufps.elecciones.entities.Candidato</class>
+  		<class>co.ufps.elecciones.entities.Votante</class>
+  			<class>co.ufps.elecciones.entities.Voto</class>
+  				<class>co.ufps.elecciones.entities.Estamento</class>
     <properties>
         <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
         <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://queenie.db.elephantsql.com/" />
