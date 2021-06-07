@@ -1,8 +1,9 @@
 package co.ufps.elecciones.entities;
 
 import java.io.Serializable;
-import java.security.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,6 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table (name = "eleccion")
@@ -21,44 +24,36 @@ public class Eleccion implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name ="id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name ="id",nullable = false)
 	private int id;
 	
 	@Column(name ="nombre")
 	private String nombre;
 	
 	@Column(name ="fechainicio")
-	private Timestamp fechainicio;
+	private LocalDateTime fechainicio;
 	
 	@Column(name ="fechafin")
-	private Timestamp fechafin;
+	private LocalDateTime fechafin;
 	
 	@Column(name ="cargo")
 	private String cargo;
 	
-	@OneToMany(mappedBy = "eleccion", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "eleccion")
 	private List<Estamento> estamentos=new ArrayList<>();
 	
-	@OneToMany(mappedBy = "eleccion", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "eleccion")
 	private List<Votante> votantes=new ArrayList<>();
 	
-	@OneToMany(mappedBy = "eleccion", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "eleccion")
 	private List<Candidato> candidatos=new ArrayList<>();
 	
 	public Eleccion() {
 		
 	}
-
-	public Eleccion(int id, String nombre, Timestamp fechainicio, Timestamp fechafin, String cargo) {
-		this.id = id;
-		this.nombre = nombre;
-		this.fechainicio = fechainicio;
-		this.fechafin = fechafin;
-		this.cargo = cargo;
-	}
 	
-	public Eleccion(String nombre, Timestamp fechainicio, Timestamp fechafin, String cargo) {
+	public Eleccion(int id, String nombre, LocalDateTime fechainicio, LocalDateTime fechafin, String cargo) {
+		this.id = id;
 		this.nombre = nombre;
 		this.fechainicio = fechainicio;
 		this.fechafin = fechafin;
@@ -79,22 +74,6 @@ public class Eleccion implements Serializable {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	public Timestamp getFechainicio() {
-		return fechainicio;
-	}
-
-	public void setFechainicio(Timestamp fechainicio) {
-		this.fechainicio = fechainicio;
-	}
-
-	public Timestamp getFechafin() {
-		return fechafin;
-	}
-
-	public void setFechafin(Timestamp fechafin) {
-		this.fechafin = fechafin;
 	}
 
 	public String getCargo() {
@@ -131,6 +110,22 @@ public class Eleccion implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	
+	public LocalDateTime getFechainicio() {
+		return fechainicio;
+	}
+
+	public void setFechainicio(LocalDateTime fechainicio) {
+		this.fechainicio = fechainicio;
+	}
+
+	public LocalDateTime getFechafin() {
+		return fechafin;
+	}
+
+	public void setFechafin(LocalDateTime fechafin) {
+		this.fechafin = fechafin;
 	}
 
 	@Override

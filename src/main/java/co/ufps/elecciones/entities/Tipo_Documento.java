@@ -1,7 +1,9 @@
 package co.ufps.elecciones.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,9 +29,8 @@ public class Tipo_Documento implements Serializable {
 	@Column(name = "descripcion")
 	private String descripcion;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "votante")
-	private Votante votante;
+	@OneToMany(mappedBy = "tipodocumento",cascade =CascadeType.ALL)
+	private List<Votante> votantes;
 
 	public Tipo_Documento() {
 
@@ -59,12 +61,13 @@ public class Tipo_Documento implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public Votante getVotante() {
-		return votante;
+
+	public List<Votante> getVotantes() {
+		return votantes;
 	}
 
-	public void setVotante(Votante votante) {
-		this.votante = votante;
+	public void setVotantes(List<Votante> votantes) {
+		this.votantes = votantes;
 	}
 
 	public static long getSerialversionuid() {
@@ -73,6 +76,6 @@ public class Tipo_Documento implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Tipo_Documento [id=" + id + ", descripcion=" + descripcion + ", votante=" + votante.getId() + "]";
+		return "Tipo_Documento [id=" + id + ", descripcion=" + descripcion +"]";
 	}
 }
