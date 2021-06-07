@@ -42,9 +42,12 @@ public class EleccionDAO implements GenericDao<Eleccion, Integer> {
 
 	@Override
 	public List<Eleccion> findAll() {
-		conexion.getManager().getTransaction().begin();
-		List<Eleccion> ans = conexion.getManager().createQuery("FROM Eleccion").getResultList();
-		conexion.getManager().getTransaction().commit();
+		List<Eleccion> ans = null;
+		try {
+			ans = conexion.getManager().createQuery("FROM Eleccion").getResultList();
+		} finally {
+			conexion.getManager().close();
+		}
 		return ans;
 	}
 

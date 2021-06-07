@@ -31,7 +31,7 @@ public class Test {
 		 VotanteDAO vtDao = new VotanteDAO();
 		 EstamentoDAO etDao = new EstamentoDAO();
 		 
-		 //System.out.println(.size());
+		 //System.out.println();
 		 //System.out.println(cDao.findAll().size());
 		 //System.out.println(vDao.findAll().size());
 		 //System.out.println(tDao.findAll().size());

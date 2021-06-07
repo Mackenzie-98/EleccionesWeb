@@ -1,6 +1,7 @@
 package co.ufps.elecciones.dao;
 import java.util.List;
 
+import co.ufps.elecciones.entities.Eleccion;
 import co.ufps.elecciones.entities.Tipo_Documento;
 import co.ufps.elecciones.interfaces.GenericDao;
 import co.ufps.elecciones.utils.Conexion;
@@ -42,7 +43,13 @@ public class Tipo_DocumentoDAO implements GenericDao<Tipo_Documento, Integer> {
 
 	@Override
 	public List<Tipo_Documento> findAll() {
-		return conexion.getManager().createQuery("FROM Tipo_Documento").getResultList();
+		List<Tipo_Documento> ans = null;
+		try {
+			ans = conexion.getManager().createQuery("FROM Tipo_Documento").getResultList();
+		} finally {
+			conexion.getManager().close();
+		}
+		return ans;
 	}
 
 	@Override

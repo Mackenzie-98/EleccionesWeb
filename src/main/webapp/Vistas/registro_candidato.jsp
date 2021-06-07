@@ -1,3 +1,4 @@
+<%@page import="co.ufps.elecciones.dao.EleccionDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 		 pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.List"%>
@@ -15,6 +16,10 @@
 </head>
 
 <body>
+	<%
+	EleccionDAO eDao = new EleccionDAO();
+	List<Eleccion> elecciones=eDao.findAll();
+	%>
 	<form id="msform" action="CandidatoController" method="post">
 		<fieldset>
 			<img src="images/logo_horizontal.png">
@@ -22,7 +27,6 @@
 			<input type="text" id="documento" placeholder="Documento" />
 			<input type="text" id="nombre" placeholder="Nombre"/>
 			<input type="text" id="apellido" placeholder="Apellido"/>
-			<%List<Eleccion> elecciones = (List<Eleccion>)request.getAttribute("elecciones");%>
 			<select class="form-control" name="proceso" required>
 				<option disabled="disabled" selected="selected">Proceso</option>
 				<%

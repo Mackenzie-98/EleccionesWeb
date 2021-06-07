@@ -1,3 +1,6 @@
+
+<%@page import="co.ufps.elecciones.dao.EleccionDAO"%>
+<%@page import="co.ufps.elecciones.dao.Tipo_DocumentoDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 		 pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.List"%>
@@ -16,25 +19,31 @@
 </head>
 
 <body>
+			<%
+			Tipo_DocumentoDAO tDao = new Tipo_DocumentoDAO();
+			List<Tipo_Documento> tiposdocumento = tDao.findAll();
+			%>
 	<form id="msform" action="../VotanteController" method="post">
 		<fieldset>
 			<img src="images/logo_horizontal.png">
 			<h2 class="fs-title">Registrar Votante</h2>
-			
-			<%List<Tipo_Documento> tiposdocumento = (List<Tipo_Documento>)request.getAttribute("tiposdocumento");%>
 			<select class="form-control" name="tipodocumento">
 				<option disabled="disabled" selected="selected">Tipo de Documento</option>
 				<%
 				  if(tiposdocumento != null)
-					  for(Tipo_Documento tp: tiposdocumento) { %>
-					  	<option value="<%=tp.getId()%>"><%=tp.getDescripcion()%></option>
-				<%}%>
+					  for(Tipo_Documento td: tiposdocumento) { %>
+					  	<option value="<%=td.getId()%>"><%=td.getDescripcion()%></option>
+				<%}
+			%>
 			</select>
 			<input type="text" name="documento" placeholder="Documento" required/>
 			<input type="text" name="nombre" placeholder="Nombre" required/>
 			<input type="text" name="email" placeholder="Email" required/>
 			
-			<%List<Eleccion> elecciones = (List<Eleccion>)request.getAttribute("elecciones");%>
+				<%
+				EleccionDAO eDao = new EleccionDAO();
+				List<Eleccion> elecciones=eDao.findAll();
+				%>
 			<select class="form-control" name="proceso" required>
 				<option disabled="disabled" selected="selected">Proceso</option>
 				<%
