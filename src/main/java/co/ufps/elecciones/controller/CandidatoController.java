@@ -1,17 +1,16 @@
 package co.ufps.elecciones.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import co.ufps.elecciones.dao.*;
 import co.ufps.elecciones.entities.*;
+import jakarta.servlet.RequestDispatcher;
 
 @WebServlet("/CandidatoController")
 public class CandidatoController extends HttpServlet {
@@ -19,40 +18,37 @@ public class CandidatoController extends HttpServlet {
        
     public CandidatoController() {
         super();
-        // TODO Auto-generated constructor stub
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
-		EleccionDAO ed = new EleccionDAO();
-		List<Eleccion> elecciones = ed.findAll();
 		
-		request.setAttribute("elecciones", elecciones);
-		request.getRequestDispatcher("vistas/registro_candidato.jsp").forward(request, response);
 	}
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		String nombre = request.getParameter("nombre");
 		String documento = request.getParameter("documento");
 		String apellido = request.getParameter("apellido");
 		String proceso = request.getParameter("proceso");
 		
-		EleccionDAO ed = new EleccionDAO();
-		CandidatoDAO cd = new CandidatoDAO();
+		EleccionDAO elecciondao = new EleccionDAO();
+		CandidatoDAO candidatodao = new CandidatoDAO();
 		
-		Eleccion e = ed.findById(Integer.parseInt(proceso));		
-		Candidato c = new Candidato(documento, nombre, apellido,e);
+		Eleccion eleccion = elecciondao.findById(Integer.parseInt(proceso));		
+		Candidato candidato = new Candidato(documento, nombre, apellido, eleccion);
+		candidato.setEleccion(eleccion);		
 		
-		c.setEleccion(e);		
-		cd.insert(c);
-		
-		response.setContentType("text/html;charset=UTF-8");
-		try(PrintWriter out = response.getWriter()){
-			out.println("Votante Registrado Correctamente");
-		}
+		try{
+			candidatodao.insert(candidato);
+			RequestDispatcher rd = request.getRequestDispatcher("Vistas/index.jsp");
+			rd.forward(request, response);
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}		
 	}
 }

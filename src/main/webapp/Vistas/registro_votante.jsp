@@ -1,57 +1,50 @@
-
-<%@page import="co.ufps.elecciones.dao.EleccionDAO"%>
-<%@page import="co.ufps.elecciones.dao.Tipo_DocumentoDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 		 pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.List"%>
 <%@page import="co.ufps.elecciones.entities.Tipo_Documento" %>
+<%@page import="co.ufps.elecciones.dao.Tipo_DocumentoDAO"%>
 <%@page import="co.ufps.elecciones.entities.Eleccion" %>
+<%@page import="co.ufps.elecciones.dao.EleccionDAO" %>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
     <title>Inscribir Votante</title>
-   <link href="css/style.css" rel="stylesheet">
+   <link href="<%=request.getContextPath()%>/Vistas/css/style.css" rel="stylesheet">
    
 </head>
 
-<body>
-			<%
-			Tipo_DocumentoDAO tDao = new Tipo_DocumentoDAO();
-			List<Tipo_Documento> tiposdocumento = tDao.findAll();
-			%>
+<body>			
 	<form id="msform" action="../VotanteController" method="post">
 		<fieldset>
-			<img src="images/logo_horizontal.png">
+			<img src="<%=request.getContextPath()%>/Vistas/images/logo_horizontal.png">
 			<h2 class="fs-title">Registrar Votante</h2>
 			<select class="form-control" name="tipodocumento">
 				<option disabled="disabled" selected="selected">Tipo de Documento</option>
 				<%
-				  if(tiposdocumento != null)
-					  for(Tipo_Documento td: tiposdocumento) { %>
+					Tipo_DocumentoDAO tDao = new Tipo_DocumentoDAO();
+					List<Tipo_Documento> tiposdocumento = tDao.findAll();					
+				  	if(tiposdocumento != null)
+				  		for(Tipo_Documento td: tiposdocumento) { %>
 					  	<option value="<%=td.getId()%>"><%=td.getDescripcion()%></option>
-				<%}
-			%>
+				<%}%>
 			</select>
 			<input type="text" name="documento" placeholder="Documento" required/>
 			<input type="text" name="nombre" placeholder="Nombre" required/>
-			<input type="text" name="email" placeholder="Email" required/>
-			
-				<%
-				EleccionDAO eDao = new EleccionDAO();
-				List<Eleccion> elecciones=eDao.findAll();
-				%>
+			<input type="text" name="email" placeholder="Email" required/>			
 			<select class="form-control" name="proceso" required>
 				<option disabled="disabled" selected="selected">Proceso</option>
 				<%
-				  if(elecciones != null)
+					EleccionDAO eDao = new EleccionDAO();
+					List<Eleccion> elecciones = eDao.findAll();
+				  	if(elecciones != null)
 					  for(Eleccion e: elecciones) { %>
 					  	<option value="<%=e.getId()%>"><%=e.getNombre()%></option>
-				<%}
-			%>
+				<%}	%>
 			</select>
 			<input type="submit" name="next" class="next action-button" value="Registrar Votante" />
 		</fieldset>

@@ -16,7 +16,7 @@
         <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://queenie.db.elephantsql.com/" />
         <property name="javax.persistence.jdbc.user" value="mnjgxshj" />
         <property name="javax.persistence.jdbc.password" value="Uzjqo00sxV0W9OzPEB1q3wpoVvGMbbUV" />
-        <property name="javax.persistence.schema-generation.database.action" value="create"/>
+        <property name="javax.persistence.schema-generation.database.action" value="update"/>
 		<property name="hibernate.show_sql" value="true"/>
     </properties>
   </persistence-unit>

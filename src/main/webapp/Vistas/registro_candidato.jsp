@@ -1,40 +1,39 @@
-<%@page import="co.ufps.elecciones.dao.EleccionDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 		 pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.List"%>
 <%@page import="co.ufps.elecciones.entities.Eleccion" %>
+<%@page import="co.ufps.elecciones.dao.EleccionDAO" %>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
     <title>Inscribir Candidato</title>
-   <link href="css/style.css" rel="stylesheet">
+   <link href="<%=request.getContextPath()%>/Vistas/css/style.css" rel="stylesheet">
    
 </head>
 
 <body>
-	<%
-	EleccionDAO eDao = new EleccionDAO();
-	List<Eleccion> elecciones=eDao.findAll();
-	%>
 	<form id="msform" action="CandidatoController" method="post">
 		<fieldset>
-			<img src="images/logo_horizontal.png">
+			<img src="<%=request.getContextPath()%>/Vistas/images/logo_horizontal.png">
 			<h2 class="fs-title">Registrar Candidato</h2>
-			<input type="text" id="documento" placeholder="Documento" />
-			<input type="text" id="nombre" placeholder="Nombre"/>
-			<input type="text" id="apellido" placeholder="Apellido"/>
+			<input type="text" id="documento" placeholder="Documento" requried/>
+			<input type="text" id="nombre" placeholder="Nombre"requried/>
+			<input type="text" id="apellido" placeholder="Apellido"requried/>
 			<select class="form-control" name="proceso" required>
 				<option disabled="disabled" selected="selected">Proceso</option>
 				<%
-				  if(elecciones != null)
-					  for(Eleccion e: elecciones) { %>
-					  	<option value="<%=e.getId()%>"><%=e.getNombre()%></option>
-				<%}
-			%>
+					EleccionDAO ed = new EleccionDAO();
+					List<Eleccion> elecciones = ed.findAll();
+					
+				  	if(elecciones != null)
+						for(Eleccion e: elecciones){%>
+					  		<option value="<%=e.getId()%>"><%=e.getNombre()%>/option>
+					  	<%}%>
 			</select>
 			<input type="submit" name="next" class="next action-button" value="Registrar Candidato" />
 		</fieldset>
