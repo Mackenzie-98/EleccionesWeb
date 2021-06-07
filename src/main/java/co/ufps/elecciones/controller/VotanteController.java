@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/")
+@WebServlet("/VotanteController")
 
 public class VotanteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -37,7 +37,6 @@ public class VotanteController extends HttpServlet {
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-<<<<<<< HEAD
 		
 	}
 
@@ -66,27 +65,5 @@ public class VotanteController extends HttpServlet {
 		try(PrintWriter out = response.getWriter()){
 			out.println("Votante Registrado Correctamente");
 		}
-=======
-//		String nombre = request.getParameter("nombre");
-//		String documento = request.getParameter("documento");
-//		String email = request.getParameter("email");
-		
-		PrintWriter out = response.getWriter();
-			out.println("<html><body");
-			out.println("<h1> Hello world</h1>");
-			out.println("</body></html>");
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		HttpSession session = request.getSession(true);
-//		String nombre = request.getParameter("nombre");
-//		String documento = request.getParameter("documento");
-//		String email = request.getParameter("email");
-//		
-		PrintWriter out = response.getWriter();
-		out.println("<html><body");
-		out.println("<h1> Hello world</h1>");
-		out.println("</body></html>");
->>>>>>> 05a92848f7d3451c7753b28568bd12876bc06093
 	}
 }
