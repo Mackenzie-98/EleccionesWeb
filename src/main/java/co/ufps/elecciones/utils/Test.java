@@ -8,9 +8,13 @@ import javax.persistence.EntityManagerFactory;
 
 import co.ufps.elecciones.dao.CandidatoDAO;
 import co.ufps.elecciones.dao.EleccionDAO;
+import co.ufps.elecciones.dao.EstamentoDAO;
 import co.ufps.elecciones.dao.Tipo_DocumentoDAO;
+import co.ufps.elecciones.dao.VotanteDAO;
+import co.ufps.elecciones.dao.VotoDAO;
 import co.ufps.elecciones.entities.Candidato;
 import co.ufps.elecciones.entities.Eleccion;
+import co.ufps.elecciones.entities.Estamento;
 
 public class Test {
 	private static EntityManager manager;
@@ -20,13 +24,17 @@ public class Test {
 		//CandidatoDAO c = new CandidatoDAO();
 		//System.out.println(c.findAll().size());
 
-		 EleccionDAO e = new EleccionDAO();
-		 List<Eleccion> list = e.findAll();
-		 for(Eleccion x: list) {
-			 System.out.println(x.toString());
-		 }
-//		 LocalDateTime t1 = LocalDateTime.now();
-//		 LocalDateTime t2 = LocalDateTime.now();
-//		 e.insert(new Eleccion(1, "Elecciones a rectoria 2021.",t1,t2,"Rector"));
+		 EleccionDAO eDao = new EleccionDAO();
+		 CandidatoDAO cDao = new CandidatoDAO();
+		 VotoDAO vDao = new VotoDAO();
+		 Tipo_DocumentoDAO tDao = new Tipo_DocumentoDAO();
+		 VotanteDAO vtDao = new VotanteDAO();
+		 EstamentoDAO etDao = new EstamentoDAO();
+		 //System.out.println(eDao.findAll().size());
+		 //System.out.println(cDao.findAll().size());
+		 //System.out.println(vDao.findAll().size());
+		 //System.out.println(tDao.findAll().size());
+		 //System.out.println(vtDao.findAll().size());
+		 System.out.println(etDao.findAll().size());
 	}
 }

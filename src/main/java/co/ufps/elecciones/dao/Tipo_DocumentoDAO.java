@@ -42,7 +42,7 @@ public class Tipo_DocumentoDAO implements GenericDao<Tipo_Documento, Integer> {
 
 	@Override
 	public List<Tipo_Documento> findAll() {
-		return conexion.getManager().createNativeQuery("FROM Tipo_Documento").getResultList();
+		return conexion.getManager().createQuery("FROM Tipo_Documento").getResultList();
 	}
 
 	@Override

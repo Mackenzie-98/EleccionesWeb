@@ -42,7 +42,7 @@ public class VotoDAO implements GenericDao<Voto, Integer> {
 	@Override
 	public List<Voto> findAll() {
 		conexion.getManager().getTransaction().begin();
-		List<Voto> ans = conexion.getManager().createNativeQuery("FROM Voto").getResultList();
+		List<Voto> ans = conexion.getManager().createQuery("FROM Voto").getResultList();
 		conexion.getManager().getTransaction().commit();
 		return ans;
 	}

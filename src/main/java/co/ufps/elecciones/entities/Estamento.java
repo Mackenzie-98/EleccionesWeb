@@ -33,7 +33,7 @@ public class Estamento implements Serializable {
 	@JoinColumn(name = "eleccion")
 	private Eleccion eleccion;
 	
-	@OneToMany(mappedBy = "votante")
+	@OneToMany(mappedBy = "estamento")
 	private List<Voto> votos = new ArrayList<>();
 	
 	public Estamento() {
