@@ -2,6 +2,8 @@
 		 pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.List"%>
 <%@page import="co.ufps.elecciones.entities.Estamento" %>
+<%@page import="co.ufps.elecciones.entities.Estamento" %>
+<%@page import="co.ufps.elecciones.dao.EstamentoDAO" %>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -20,13 +22,14 @@
 			<img src="<%= request.getContextPath()%>/images/logo_horizontal.png">
 			<h2 class="fs-title">Confirmar Datos</h2>
 			<label>${eleccion.getNombre()}</label>
-			<%List<Estamento> estamentos = (List<Estamento>)request.getAttribute("tiposdocumento");%>
 			<select class="form-control" name="estamento">
 				<option disabled="disabled" selected="selected">Estamento</option>
 				<%
-				  if(estamentos != null)
-					  for(Estamento e: estamentos) { %>
-					  	<option value="<%=e.getId()%>"><%=e.getDescripcion()%></option>
+					EstamentoDAO edao = new EstamentoDAO();
+					List<Estamento> estamentos = edao.findAll();
+				  	if(estamentos != null)
+						for(Estamento e: estamentos) { %>
+					  		<option value="<%=e.getId()%>"><%=e.getDescripcion()%></option>
 				<%}
 			%>
 			</select>

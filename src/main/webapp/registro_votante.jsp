@@ -19,7 +19,7 @@
 </head>
 
 <body>			
-	<form id="msform" action="../VotanteController" method="post">
+	<form id="msform" action="VotanteController" method="post">
 		<fieldset>
 			<img src="<%=request.getContextPath()%>/images/logo_horizontal.png">
 			<h2 class="fs-title">Registrar Votante</h2>

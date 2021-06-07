@@ -14,7 +14,7 @@
 </head>
 
 <body>
-	<form id="msform" action="../IndexController" method="post">
+	<form id="msform" action="IndexController" method="post">
 		<fieldset>
 			<img src="<%= request.getContextPath()%>/images/logo_horizontal.png">
 			<h2 class="fs-title">Votaciones UFPS</h2>
