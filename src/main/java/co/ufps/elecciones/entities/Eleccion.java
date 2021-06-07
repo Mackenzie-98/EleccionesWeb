@@ -131,8 +131,7 @@ public class Eleccion implements Serializable {
 	@Override
 	public String toString() {
 		return "Eleccion [id=" + id + ", nombre=" + nombre + ", fechainicio=" + fechainicio + ", fechafin=" + fechafin
-				+ ", cargo=" + cargo + ", estamentos=" + estamentos + ", votantes=" + votantes + ", candidatos="
-				+ candidatos + "]";
+				+ ", cargo=" + cargo +"]";
 	}
 	
 	

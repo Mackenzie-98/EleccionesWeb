@@ -20,50 +20,59 @@ public class Voto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name ="id") 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
-	
-	@Column(name = "fechacreacion")
+
+	@Column(name = "fechacreacion", nullable = false)
 	private Timestamp fechacreacion;
-	
+
 	@Column(name = "fechavoto")
 	private Timestamp fechavoto;
-	
+
 	@Column(name = "uuid")
 	private String uuid;
-	
+
 	@Column(name = "enlace")
 	private String enlace;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "estamento")
 	private Estamento estamento;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "candidato")
 	private Candidato candidato;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "votante")
 	private Votante votante;
-	
+
 	public Voto() {
-		
+
 	}
 
-	public Voto(int id, Timestamp fechacreacion, Timestamp fechavoto, String uuid, String enlace) {
+	public Voto(int id, Timestamp fechacreacion, Timestamp fechavoto, String uuid, String enlace, Estamento estamento,
+			Candidato candidato, Votante votante) {
 		this.id = id;
 		this.fechacreacion = fechacreacion;
 		this.fechavoto = fechavoto;
 		this.uuid = uuid;
 		this.enlace = enlace;
+		this.estamento = estamento;
+		this.candidato = candidato;
+		this.votante = votante;
 	}
-	public Voto(Timestamp fechacreacion, Timestamp fechavoto, String uuid, String enlace) {
+
+	public Voto(Timestamp fechacreacion, Timestamp fechavoto, String uuid, String enlace, Estamento estamento,
+			Candidato candidato, Votante votante) {
 		this.fechacreacion = fechacreacion;
 		this.fechavoto = fechavoto;
 		this.uuid = uuid;
 		this.enlace = enlace;
+		this.estamento = estamento;
+		this.candidato = candidato;
+		this.votante = votante;
 	}
 
 	public int getId() {
@@ -137,10 +146,8 @@ public class Voto implements Serializable {
 	@Override
 	public String toString() {
 		return "Voto [id=" + id + ", fechacreacion=" + fechacreacion + ", fechavoto=" + fechavoto + ", uuid=" + uuid
-				+ ", enlace=" + enlace + ", estamento=" + estamento.getId() + ", candidato=" + candidato + ", votante="
-				+ votante.getId() + "]";
+				+ ", enlace=" + enlace + ", estamento=" + estamento.getId() + ", candidato=" + candidato.getId()
+				+ ", votante=" + votante.getId() + "]";
 	}
-	
-	
 
 }

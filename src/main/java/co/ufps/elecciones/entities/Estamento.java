@@ -30,7 +30,7 @@ public class Estamento implements Serializable {
 	private String descripcion;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "eleccion")
+	@JoinColumn(name = "eleccion",nullable = false)
 	private Eleccion eleccion;
 	
 	@OneToMany(mappedBy = "estamento")
@@ -40,12 +40,16 @@ public class Estamento implements Serializable {
 		
 	}
 
-	public Estamento(int id, String descripcion) {
+	public Estamento(int id, String descripcion, Eleccion eleccion) {
+		super();
 		this.id = id;
 		this.descripcion = descripcion;
+		this.eleccion = eleccion;
 	}
-	public Estamento(String descripcion) {
+	
+	public Estamento(String descripcion, Eleccion eleccion) {
 		this.descripcion = descripcion;
+		this.eleccion = eleccion;
 	}
 
 	public int getId() {
@@ -86,8 +90,7 @@ public class Estamento implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Estamento [id=" + id + ", descripcion=" + descripcion + ", eleccion=" + eleccion.getId() + ", votos=" + votos
-				+ "]";
+		return "Estamento [id=" + id + ", descripcion=" + descripcion + ", eleccion=" + eleccion.getId() + "]";
 	}
 	
 	

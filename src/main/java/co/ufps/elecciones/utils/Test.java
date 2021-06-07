@@ -30,11 +30,13 @@ public class Test {
 		 Tipo_DocumentoDAO tDao = new Tipo_DocumentoDAO();
 		 VotanteDAO vtDao = new VotanteDAO();
 		 EstamentoDAO etDao = new EstamentoDAO();
-		 //System.out.println(eDao.findAll().size());
+		 
+		 //System.out.println(.size());
 		 //System.out.println(cDao.findAll().size());
 		 //System.out.println(vDao.findAll().size());
 		 //System.out.println(tDao.findAll().size());
 		 //System.out.println(vtDao.findAll().size());
-		 System.out.println(etDao.findAll().size());
+		 //System.out.println(etDao.findAll().size());
+		 
 	}
 }

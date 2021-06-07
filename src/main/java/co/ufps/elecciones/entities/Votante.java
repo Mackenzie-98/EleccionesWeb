@@ -1,7 +1,10 @@
 package co.ufps.elecciones.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -40,20 +44,30 @@ public class Votante implements Serializable {
 	@JoinColumn(name = "eleccion")
 	private Eleccion eleccion;
 	
+	@OneToMany(mappedBy = "votante",cascade = CascadeType.ALL)
+	List<Voto> votos = new ArrayList<>();
+	
 	public Votante() {
 		
 	}
-
-	public Votante(int id, String nombre, String email, String documento) {
+	
+	public Votante(int id, String nombre, String email, String documento, Tipo_Documento tipodocumento,
+			Eleccion eleccion) {
 		this.id = id;
 		this.nombre = nombre;
 		this.email = email;
 		this.documento = documento;
+		this.tipodocumento = tipodocumento;
+		this.eleccion = eleccion;
 	}
-	public Votante(String nombre, String email, String documento) {
+
+	public Votante(String nombre, String email, String documento, Tipo_Documento tipodocumento,
+			Eleccion eleccion) {
 		this.nombre = nombre;
 		this.email = email;
 		this.documento = documento;
+		this.tipodocumento = tipodocumento;
+		this.eleccion = eleccion;
 	}
 
 	public int getId() {

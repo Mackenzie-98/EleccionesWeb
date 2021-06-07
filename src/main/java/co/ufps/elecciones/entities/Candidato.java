@@ -50,19 +50,20 @@ public class Candidato implements Serializable {
 		
 	}
 
-	public Candidato(int id, String documento, String nombre, String apellido) {
+	public Candidato(int id, String documento, String nombre, String apellido, int numero, Eleccion eleccion) {
 		this.id = id;
 		this.documento = documento;
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.numero = id;
+		this.numero = numero;
+		this.eleccion = eleccion;
 	}
-	
-	public Candidato(String documento, String nombre, String apellido) {
+	public Candidato(String documento, String nombre, String apellido, int numero, Eleccion eleccion) {
 		this.documento = documento;
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.numero = id;
+		this.numero = numero;
+		this.eleccion = eleccion;
 	}
 
 	public int getId() {
@@ -128,7 +129,7 @@ public class Candidato implements Serializable {
 	@Override
 	public String toString() {
 		return "Candidato [id=" + id + ", documento=" + documento + ", nombre=" + nombre + ", apellido=" + apellido
-				+ ", numero=" + numero + ", eleccion=" + eleccion.getId() + ", votos=" + votos + "]";
+				+ ", numero=" + numero + ", eleccion=" + eleccion.getId()+"]";
 	}
 	
 }
