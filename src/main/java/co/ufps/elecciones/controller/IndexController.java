@@ -29,7 +29,7 @@ public class IndexController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		String dir = request.getParameter("next");
-		RequestDispatcher rd = request.getRequestDispatcher("Vistas/" + dir + ".jsp");
+		RequestDispatcher rd = request.getRequestDispatcher(dir + ".jsp");
 		rd.forward(request, response);
 	}
 }

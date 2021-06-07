@@ -48,7 +48,7 @@ public class VotanteController extends HttpServlet {
 		votante.setEleccion(eleccion);
 				
 		votantedao.insert(votante);
-		RequestDispatcher rd = request.getRequestDispatcher("Vistas/index.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 		rd.forward(request, response);
 	}
 }

@@ -45,7 +45,7 @@ public class CandidatoController extends HttpServlet {
 		
 		try{
 			candidatodao.insert(candidato);
-			RequestDispatcher rd = request.getRequestDispatcher("Vistas/index.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);
 		}catch(Exception e) {
 			System.out.println(e.getMessage());

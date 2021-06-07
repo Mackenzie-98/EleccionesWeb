@@ -11,13 +11,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
     <title>Confirmar Datos</title>
-    <link href="<%= request.getContextPath()%>/Vistas/css/style.css" rel="stylesheet">
+    <link href="<%= request.getContextPath()%>/css/style.css" rel="stylesheet">
 </head>
 
 <body>
 	<form id="msform">
 		<fieldset>
-			<img src="<%= request.getContextPath()%>/Vistas/images/logo_horizontal.png">
+			<img src="<%= request.getContextPath()%>/images/logo_horizontal.png">
 			<h2 class="fs-title">Confirmar Datos</h2>
 			<label>${eleccion.getNombre()}</label>
 			<%List<Estamento> estamentos = (List<Estamento>)request.getAttribute("tiposdocumento");%>
