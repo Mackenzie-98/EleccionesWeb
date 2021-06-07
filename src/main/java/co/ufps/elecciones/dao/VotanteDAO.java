@@ -10,7 +10,7 @@ import co.ufps.elecciones.entities.Votante;
 
 public class VotanteDAO implements GenericDao <Votante, Integer> {
 	
-	public Conexion conexion;
+	public Conexion conexion = new Conexion();
 	
 	@Override
 	public void insert(Votante entity) {
@@ -46,7 +46,7 @@ public class VotanteDAO implements GenericDao <Votante, Integer> {
 	@Override
 	public List<Votante> findAll() {
 		conexion.getManager().getTransaction().begin();
-		List<Votante> ans = conexion.getManager().createNativeQuery("SELECT * FROM votante").getResultList();
+		List<Votante> ans = conexion.getManager().createNativeQuery("FROM Votante").getResultList();
 		conexion.getManager().getTransaction().commit();
 		return ans;
 	}
