@@ -31,6 +31,7 @@
 		    		</div>
 		    	</label>
 		    <%}%>
-	</div>	
+	</div>
+</div>
 </body>
 </html>

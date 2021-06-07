@@ -19,7 +19,6 @@ public class CandidatoController extends HttpServlet {
        
     public CandidatoController() {
         super();
-        // TODO Auto-generated constructor stub
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
