@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 		 pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.List"%>
-<%@page import="co.ufps.elecciones.entities.Tipo_Documento" %>
 <%@page import="co.ufps.elecciones.entities.Eleccion" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,33 +9,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
-    <title>Inscribir Votante</title>
+    <title>Votar</title>
    <link href="css/style.css" rel="stylesheet">
    
 </head>
 
 <body>
-	<form id="msform" action="../VotanteController" method="post">
+	<form id="msform" action="../IndexController" method="post">
 		<fieldset>
 			<img src="images/logo_horizontal.png">
-			<h2 class="fs-title">Registrar Votante</h2>
+			<h2 class="fs-title">Votaciones UFPS</h2>
 			
-			<%List<Tipo_Documento> tiposdocumento = (List<Tipo_Documento>)request.getAttribute("tiposdocumento");%>
-			<select class="form-control" name="tipodocumento">
-				<option disabled="disabled" selected="selected">Tipo de Documento</option>
-				<%
-				  if(tiposdocumento != null)
-					  for(Tipo_Documento tp: tiposdocumento) { %>
-					  	<option value="<%=tp.getId()%>"><%=tp.getDescripcion()%></option>
-				<%}%>
-			</select>
-			<input type="text" name="documento" placeholder="Documento" required/>
-			<input type="text" name="nombre" placeholder="Nombre" required/>
-			<input type="text" name="email" placeholder="Email" required/>
-			
+			<p>Seleccione la elección en la que desea participar</p>			
 			<%List<Eleccion> elecciones = (List<Eleccion>)request.getAttribute("elecciones");%>
-			<select class="form-control" name="proceso" required>
-				<option disabled="disabled" selected="selected">Proceso</option>
+			<select class="form-control" name="eleccion" required>
+				<option disabled="disabled" selected="selected">Eleccion</option>
 				<%
 				  if(elecciones != null)
 					  for(Eleccion e: elecciones) { %>
@@ -44,7 +31,7 @@
 				<%}
 			%>
 			</select>
-			<input type="submit" name="next" class="next action-button" value="Registrar Votante" />
+			<input type="submit" name="votar" class="next action-button" value="Votar Ahora" />
 		</fieldset>
 	</form>
 	

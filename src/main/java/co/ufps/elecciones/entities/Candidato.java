@@ -50,19 +50,19 @@ public class Candidato implements Serializable {
 		
 	}
 
-	public Candidato(int id, String documento, String nombre, String apellido, int numero) {
+	public Candidato(int id, String documento, String nombre, String apellido) {
 		this.id = id;
 		this.documento = documento;
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.numero = numero;
+		this.numero = id;
 	}
 	
-	public Candidato(String documento, String nombre, String apellido, int numero) {
+	public Candidato(String documento, String nombre, String apellido) {
 		this.documento = documento;
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.numero = numero;
+		this.numero = id;
 	}
 
 	public int getId() {

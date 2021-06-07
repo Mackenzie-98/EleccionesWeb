@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,13 +14,12 @@ import jakarta.servlet.http.HttpServletResponse;
 import co.ufps.elecciones.dao.*;
 import co.ufps.elecciones.entities.*;
 
-@WebServlet("/CandidatoController")
-public class CandidatoController extends HttpServlet {
+@WebServlet("/IndexController")
+public class IndexController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public CandidatoController() {
+    public IndexController() {
         super();
-        // TODO Auto-generated constructor stub
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
@@ -28,31 +28,23 @@ public class CandidatoController extends HttpServlet {
 		List<Eleccion> elecciones = ed.findAll();
 		
 		request.setAttribute("elecciones", elecciones);
-		request.getRequestDispatcher("vistas/registro_candidato.jsp").forward(request, response);
+		request.getRequestDispatcher("vistas/index.jsp").forward(request, response);
 	}
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nombre = request.getParameter("nombre");
-		String documento = request.getParameter("documento");
-		String apellido = request.getParameter("apellido");
-		String proceso = request.getParameter("proceso");
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		/*String eleccion = request.getParameter("eleccion");
 		EleccionDAO ed = new EleccionDAO();
-		CandidatoDAO cd = new CandidatoDAO();
+		Eleccion e = ed.findById(Integer.parseInt(eleccion));
 		
-		Eleccion e = ed.findById(Integer.parseInt(proceso));		
-		Candidato c = new Candidato(documento, nombre, apellido);
+		request.setAttribute("eleccion", eleccion);*/
+		RequestDispatcher rd = request.getRequestDispatcher("/Vistas/validar_datos.jsp");
+		rd.forward(request, response);
 		
-		c.setEleccion(e);		
-		cd.insert(c);
 		
-		response.setContentType("text/html;charset=UTF-8");
-		try(PrintWriter out = response.getWriter()){
-			out.println("Votante Registrado Correctamente");
-		}
 	}
 }
