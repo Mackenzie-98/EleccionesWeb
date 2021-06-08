@@ -49,6 +49,6 @@ public class CandidatoController extends HttpServlet {
 			rd.forward(request, response);
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
-		}		
+		}
 	}
 }

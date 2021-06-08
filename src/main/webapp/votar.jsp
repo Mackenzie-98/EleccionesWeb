@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <%@page import="java.util.List"%>
+<%@page import="co.ufps.elecciones.entities.Eleccion" %>
+<%@page import="co.ufps.elecciones.entities.Estamento" %>
+<%@page import="co.ufps.elecciones.entities.Votante" %>
 <%@page import="co.ufps.elecciones.entities.Candidato" %>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,32 +19,23 @@
 
 <div class="wrapper">
 	<div class="title">
-	 	${eleccion.getNombre()}
-	 	${estamento.getNombre()}
+	 	<h2>${eleccion.getNombre()}</h2>
+	 	<h2>${estamento.getDescripcion()}</h2>
   	</div>
 
-	<div class="container">
-	<label class="option_item">
-      <input type="checkbox" class="checkbox">
-      <div class="option_inner facebook">
-        <div class="tickmark"></div>
-        <div class="icon"><i class="fab fa-facebook-f"></i></div>
-        <div class="name">Facebook</div>
-      </div>
-    </label>
-		<%List<Candidato> candidatos =  (List<Candidato>) request.getAttribute("candidatos");%>
-	    <%if(candidatos != null)
-			for(Candidato c: candidatos){%>
-				<label class="option_item"> 
-			      	<input type="radio" class="checkbox" value=<%=c.getId()%> name="elegido">
+	<form action="VotarController" method="post" class="container">
+		<c:forEach var="c" items="${candidatos}">
+			<label class="option_item">	
+				<input type="radio" class="checkbox" name="candidato" value="${c.getId()}">		
 					<div class="option_inner">
-				   		<div class="tickmark"></div>
-			       		<div class="icon"><i class="fab fa"></i></div>
-			       		<div class="name"><%=String.valueOf(c.getNombre() + " " + c.getApellido())%></div>
-		    		</div>
-		    	</label>
-		    <%}%>
-	</div>
+						<div class="tickmark"></div>
+			        	<div class="icon"><i class="fab"></i></div>
+			        	<div class="name">${c.getNombre()} ${c.getApellido()}</div>
+			        </div>
+			</label>
+		</c:forEach>
+		<input type="submit" value="Votar">	
+	</form>
 </div>
 </body>
 </html>

@@ -23,7 +23,8 @@
 			<input type="hidden" id="next" name="next" value=""/>		
 			<input type="submit" name="registrar_candidato" class="next action-button" onclick="javascript:document.getElementById('next').value = 'registro_candidato';" value="Registrar Candidato" />
 			<input type="submit" name="registrar_votante" class="next action-button" onclick="javascript:document.getElementById('next').value = 'registro_votante';" value="Registrar Votante" />
-			<input type="submit" name="votar" class="next action-button" onclick="javascript:document.getElementById('next').value = 'votar';" value="Votar Ahora" />
+			<input type="submit" name="votar" class="next action-button" onclick="javascript:document.getElementById('next').value = 'validar_datos';" value="Votar Ahora" />
+			<input type="submit" name="resultados" class="next action-button" onclick="javascript:document.getElementById('next').value = 'consultarElecciones';" value="Consultar Resultados" />
 		</fieldset>
 	</form>
 	

@@ -2,8 +2,11 @@
 		 pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.List"%>
 <%@page import="co.ufps.elecciones.entities.Estamento" %>
-<%@page import="co.ufps.elecciones.entities.Estamento" %>
+<%@page import="co.ufps.elecciones.entities.Tipo_Documento" %>
+<%@page import="co.ufps.elecciones.entities.Eleccion" %>
 <%@page import="co.ufps.elecciones.dao.EstamentoDAO" %>
+<%@page import="co.ufps.elecciones.dao.Tipo_DocumentoDAO" %>
+<%@page import="co.ufps.elecciones.dao.EleccionDAO" %>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -17,11 +20,10 @@
 </head>
 
 <body>
-	<form id="msform">
+	<form id="msform" action="ValidarDatos" method="post">
 		<fieldset>
 			<img src="<%= request.getContextPath()%>/images/logo_horizontal.png">
 			<h2 class="fs-title">Confirmar Datos</h2>
-			<label>${eleccion.getNombre()}</label>
 			<select class="form-control" name="estamento">
 				<option disabled="disabled" selected="selected">Estamento</option>
 				<%
@@ -33,9 +35,31 @@
 				<%}
 			%>
 			</select>
+			<select class="form-control" name="tipodocumento">
+				<option disabled="disabled" selected="selected">Tipo de Documento</option>
+				<%
+					Tipo_DocumentoDAO tdao = new Tipo_DocumentoDAO();
+					List<Tipo_Documento> tiposdocumento = tdao.findAll();
+				  	if(tiposdocumento != null)
+						for(Tipo_Documento td: tiposdocumento) { %>
+					  		<option value="<%=td.getId()%>"><%=td.getDescripcion()%></option>
+				<%}
+			%>
+			</select>
 			<input type="text" name="documento" placeholder="Documento" required/>
 			<input type="text" name="nombre" placeholder="Nombre" required/>
 			<input type="text" name="email" placeholder="Email" required/>
+			<select class="form-control" name="eleccion" required>
+				<option disabled="disabled" selected="selected">Proceso</option>
+				<%
+					EleccionDAO ed = new EleccionDAO();
+					List<Eleccion> elecciones = ed.findAll();
+					
+				  	if(elecciones != null)
+						for(Eleccion e: elecciones){%>
+					  		<option value="<%=e.getId()%>"><%=e.getNombre()%></option>
+					  	<%}%>
+			</select>
 			<input type="submit" name="enviar" class="next action-button" value="Confirmar Datos" />
 		</fieldset>
 	</form>

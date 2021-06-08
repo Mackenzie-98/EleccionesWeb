@@ -9,14 +9,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
-	<link href="css/style3.css" rel="stylesheet">
+	<link href="<%=request.getContextPath()%>/css/style3.css" rel="stylesheet">
 </head>
 <body>
 
-<form id="msform" action="" method="post">
+<form id="msform" action="consultarEleccionController" method="post">
 	<fieldset>
-		<img src="images/logo_horizontal.png">
+		<img src="<%=request.getContextPath()%>/images/logo_horizontal.png">
 		<h2 class="fs-title">Resultados</h2>
+		<input type="hidden" value="" id="idEleccion" name="idEleccion">
 		<table class="table">
 		  <thead class="table-red">
 		      <tr>
@@ -31,7 +32,7 @@
 		    	<td>1</td>
 		    	<td>Example</td>
 		    	<td>502</td>
-		    	<td><button type="button" class="btn btn-primary btn-sm">Ver detalles</button></td>
+		    	<td><button type="button" class="btn btn-primary btn-sm" onclick="javascript:document.getElementById('idEleccion').value = 'consultarElecciones';"">Ver detalles</button></td>
 		    </tr>
 		  </tbody>
 		</table>

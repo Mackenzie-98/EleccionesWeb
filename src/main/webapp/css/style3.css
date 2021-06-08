@@ -11,10 +11,9 @@ body {
 }
 /*form styles*/
 #msform {
-	width: auto;
-	margin: 7px auto;
-	text-align: center;
-	position: relative;
+	padding-left: 40px;
+	justify-content: center;
+	align-items: center;
 }
 
 #msform fieldset{
@@ -25,7 +24,7 @@ body {
 	padding: 20px 30px;
 	
 	box-sizing: border-box;
-	width: 80%;
+	width: auto;
 	margin: 0 10%;
 	
 	/*stacking fieldsets above each other*/
@@ -86,6 +85,6 @@ img{
 	background-color: white;
 }
 #contable{
-	width: 1vw;
+	width: auto;
 	text-align: center;
 }

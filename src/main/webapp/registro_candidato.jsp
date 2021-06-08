@@ -23,7 +23,7 @@
 			<h2 class="fs-title">Registrar Candidato</h2>
 			<input type="text" id="documento" placeholder="Documento" requried/>
 			<input type="text" id="nombre" placeholder="Nombre"requried/>
-			<input type="text" id="apellido" placeholder="Apellido"requried/>
+			<input type="text" id="apellido" placeholder="Apellido" requried/>
 			<select class="form-control" name="proceso" required>
 				<option disabled="disabled" selected="selected">Proceso</option>
 				<%
@@ -32,7 +32,7 @@
 					
 				  	if(elecciones != null)
 						for(Eleccion e: elecciones){%>
-					  		<option value="<%=e.getId()%>"><%=e.getNombre()%>/option>
+					  		<option value="<%=e.getId()%>"><%=e.getNombre()%></option>
 					  	<%}%>
 			</select>
 			<input type="submit" name="next" class="next action-button" value="Registrar Candidato" />
